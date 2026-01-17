@@ -1,0 +1,13 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> result = new HashMap<>();
+        for (String s: strs){
+            char[] characterArray = s.toCharArray();
+            Arrays.sort(characterArray);
+            String sortedString = new String(characterArray);
+            result.putIfAbsent(sortedString, new ArrayList<>());
+            result.get(sortedString).add(s);
+        }
+        return new ArrayList<>(result.values());
+    }
+}
